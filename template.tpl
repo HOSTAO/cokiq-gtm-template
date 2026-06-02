@@ -19,7 +19,10 @@ ___INFO___
     "id": "cokiq",
     "displayName": "COKIQ"
   },
-  "description": "Loads the COKIQ consent banner on all pages."
+  "description": "Loads the COKIQ consent banner on all pages.",
+  "containerContexts": [
+    "WEB"
+  ]
 }
 
 ___TEMPLATE_PARAMETERS___
