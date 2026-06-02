@@ -10,7 +10,7 @@ ___INFO___
 
 {
   "type": "TAG",
-  "id": "cokiq_consent_banner",
+  "id": "cvt_temp_public_id",
   "version": 1,
   "securityGroups": [],
   "displayName": "COKIQ Consent Banner",
@@ -34,36 +34,8 @@ ___TEMPLATE_PARAMETERS___
     "displayName": "COKIQ site key",
     "simpleValueType": true,
     "valueHint": "Paste the site key from COKIQ"
-  },
-  {
-    "type": "TEXT",
-    "name": "baseUrl",
-    "displayName": "COKIQ base URL",
-    "simpleValueType": true,
-    "defaultValue": "https://cokiq.com"
   }
 ]
-
-___SANDBOXED_JS_FOR_WEB_TEMPLATE___
-
-const injectScript = require('injectScript');
-const encodeUriComponent = require('encodeUriComponent');
-const logToConsole = require('logToConsole');
-
-const siteKey = data.siteKey;
-const baseUrl = (data.baseUrl || 'https://cokiq.com').replace(/\/$/, '');
-
-if (!siteKey) {
-  logToConsole('COKIQ: site key is required.');
-  data.gtmOnFailure();
-} else {
-  injectScript(
-    baseUrl + '/api/s/' + encodeUriComponent(siteKey),
-    data.gtmOnSuccess,
-    data.gtmOnFailure,
-    'cokiq-consent-' + siteKey
-  );
-}
 
 ___WEB_PERMISSIONS___
 
@@ -89,9 +61,7 @@ ___WEB_PERMISSIONS___
         }
       ]
     },
-    "clientAnnotations": {
-      "isEditedByUser": true
-    }
+    "isRequired": true
   },
   {
     "instance": {
@@ -103,19 +73,32 @@ ___WEB_PERMISSIONS___
         {
           "key": "environments",
           "value": {
-            "type": 2,
-            "listItem": [
-              {
-                "type": 1,
-                "string": "debug"
-              }
-            ]
+            "type": 1,
+            "string": "debug"
           }
         }
       ]
     },
-    "clientAnnotations": {
-      "isEditedByUser": true
-    }
+    "isRequired": true
   }
 ]
+
+___SANDBOXED_JS_FOR_WEB_TEMPLATE___
+
+const injectScript = require('injectScript');
+const encodeUriComponent = require('encodeUriComponent');
+const logToConsole = require('logToConsole');
+
+const siteKey = data.siteKey;
+
+if (!siteKey) {
+  logToConsole('COKIQ: site key is required.');
+  data.gtmOnFailure();
+} else {
+  injectScript(
+    'https://cokiq.com/api/s/' + encodeUriComponent(siteKey),
+    data.gtmOnSuccess,
+    data.gtmOnFailure,
+    'cokiq-consent-' + siteKey
+  );
+}
