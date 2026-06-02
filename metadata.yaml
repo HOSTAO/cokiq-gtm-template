@@ -1,0 +1,5 @@
+homepage: "https://cokiq.com"
+documentation: "https://cokiq.com/docs"
+versions:
+  - sha: 38d7b2bdfe1be59443cc4b06b421d4b5cdd71ab9
+    changeNotes: "Initial release of the COKIQ Consent Banner GTM template."
