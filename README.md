@@ -1,42 +1,33 @@
 # COKIQ Consent Banner GTM Template
 
-This repository contains the Google Tag Manager Community Template Gallery source for **COKIQ Consent Banner**.
+Google Tag Manager Community Template Gallery source for **COKIQ Consent Banner** (COKIQ by Hostao L.L.C.).
 
-COKIQ helps websites load a cookie consent banner and record visitor consent choices. This GTM template loads the COKIQ site script through Google Tag Manager using a configured COKIQ site key.
+The tag:
 
-## Template Type
-
-Tag template.
+1. sets the Google Consent Mode v2 **default** command for ad_storage, analytics_storage, ad_user_data and ad_personalization (plus functionality_storage, personalization_storage, security_storage), customisable **by region** (all regions, EEA + UK + Switzerland, or your own ISO 3166-2 list, with a separate default for other regions), with wait_for_update, ads_data_redaction and url_passthrough;
+2. loads the COKIQ banner script (`https://cokiq.com/api/s/{siteKey}`), which sends the Consent Mode **update** command after every visitor choice and sets the COKIQ Google developer ID.
 
 ## Fields
 
-- `siteKey`: the site key copied from the COKIQ dashboard.
-- `baseUrl`: the COKIQ script host. Keep the default `https://cokiq.com` unless using a dedicated COKIQ host.
+- `siteKey`: the site key from the COKIQ dashboard.
+- Consent Mode defaults: regions, the four consent types, the default for other regions, wait_for_update, ads_data_redaction, url_passthrough.
 
 ## Permissions
 
-The template requests:
-
+- `access_consent` (write defaults for the 7 consent types)
+- `write_data_layer` for `ads_data_redaction` and `url_passthrough` (gtag set)
+- `access_globals` write `__cokiqConsentModeDefaultsReady` (so the COKIQ script does not send a second default)
 - `inject_script` for `https://cokiq.com/api/s/*`
 - debug-only logging
 
 ## Install
 
-1. In Google Tag Manager, open **Templates**.
-2. Click **Search Gallery** after the template is approved, or import `template.tpl` manually before gallery approval.
-3. Create a new tag from **COKIQ Consent Banner**.
-4. Paste the COKIQ site key.
-5. Trigger on all pages.
-6. Use GTM Preview to confirm the COKIQ script loads once per page.
+1. In Google Tag Manager open **Templates > Search Gallery** (or import `template.tpl`).
+2. Create a tag from **COKIQ Consent Banner**, paste the site key, choose the regions (same as "Where to show the banner" in COKIQ).
+3. Trigger: **Consent Initialization - All Pages**.
+4. Check in GTM Preview / Tag Assistant: the consent default appears before other tags, and an update after a banner choice.
 
-## Verification
+## Docs and support
 
-- GTM Preview shows the COKIQ tag firing.
-- Browser network requests include `https://cokiq.com/api/s/{siteKey}`.
-- Consent choices appear in the COKIQ dashboard for the configured website.
-
-## Support
-
-- Website: https://cokiq.com
-- Documentation: https://cokiq.com/docs
-- Support: https://cokiq.com/support
+- Docs: https://cokiq.com/docs/google-consent-mode-basic-vs-advanced , https://cokiq.com/docs/regional-banner , https://cokiq.com/docs/debug-mode
+- Support (contact COKIQ first for Consent Mode issues, not Google): support@cokiq.com
