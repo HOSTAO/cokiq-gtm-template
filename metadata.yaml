@@ -1,5 +1,7 @@
 homepage: "https://cokiq.com"
-documentation: "https://cokiq.com/docs"
+documentation: "https://cokiq.com/docs/google-consent-mode-basic-vs-advanced"
 versions:
+  - sha: a880d70b55e7f7c205bd268da4bac2d46ef14f74
+    changeNotes: "Sets Google Consent Mode v2 defaults (ad_storage, analytics_storage, ad_user_data, ad_personalization) customisable by region, ads_data_redaction and url_passthrough, then loads COKIQ."
   - sha: 14464b0b98bdada9f30ea5c9d9f0de2216db5a58
     changeNotes: "Initial release of the COKIQ Consent Banner GTM template."
