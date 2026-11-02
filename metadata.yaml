@@ -1,6 +1,8 @@
 homepage: "https://cokiq.com"
 documentation: "https://cokiq.com/docs/google-consent-mode-basic-vs-advanced"
 versions:
+  - sha: ee3fd653ce4ed8acc442c7ad2f13f8bd29e0fc95
+    changeNotes: "Sets COKIQ's Google CMP developer ID once per page (gtagSet developer_id) before the Consent Mode defaults. Unit test added."
   - sha: b3248d0b0a620267d4040682e886e54b223993db
     changeNotes: "Consent Mode updates with updateConsentState from the template (returning visitor and every new choice via Cokiq.addConsentListener), COKIQ brand thumbnail, 7 unit tests."
   - sha: a880d70b55e7f7c205bd268da4bac2d46ef14f74
