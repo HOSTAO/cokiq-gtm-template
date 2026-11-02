@@ -262,6 +262,10 @@ const onUserConsent = (consent) => {
   updateConsentState(toConsentState(choices));
 };
 
+// 0. COKIQ Google CMP developer ID (Google CMP Partner Program): once per page, before the consent defaults.
+gtagSet({'developer_id.dZjc5MD': true});
+setInWindow('__cokiqDeveloperIdSet', true, true);
+
 // 1. Consent Mode defaults (before any other tag; use the Consent Initialization - All Pages trigger).
 let regions = [];
 if (data.regionRule === 'eea_uk_ch') regions = EEA_UK_CH;
@@ -617,6 +621,10 @@ ___WEB_PERMISSIONS___
               {
                 "type": 1,
                 "string": "url_passthrough"
+              },
+              {
+                "type": 1,
+                "string": "developer_id.dZjc5MD"
               }
             ]
           }
@@ -753,6 +761,45 @@ ___WEB_PERMISSIONS___
                     "boolean": true
                   }
                 ]
+              },
+              {
+                "type": 3,
+                "mapKey": [
+                  {
+                    "type": 1,
+                    "string": "key"
+                  },
+                  {
+                    "type": 1,
+                    "string": "read"
+                  },
+                  {
+                    "type": 1,
+                    "string": "write"
+                  },
+                  {
+                    "type": 1,
+                    "string": "execute"
+                  }
+                ],
+                "mapValue": [
+                  {
+                    "type": 1,
+                    "string": "__cokiqDeveloperIdSet"
+                  },
+                  {
+                    "type": 8,
+                    "boolean": true
+                  },
+                  {
+                    "type": 8,
+                    "boolean": true
+                  },
+                  {
+                    "type": 8,
+                    "boolean": false
+                  }
+                ]
               }
             ]
           }
@@ -762,7 +809,6 @@ ___WEB_PERMISSIONS___
     "isRequired": true
   }
 ]
-
 
 ___TESTS___
 
@@ -796,6 +842,8 @@ scenarios:
     assertThat(defaultsCalls[1].region).contains('DE');
     assertThat(defaultsCalls[1].region).contains('GB');
     assertApi('gtagSet').wasCalledWith({ads_data_redaction: true, url_passthrough: true});
+    assertApi('gtagSet').wasCalledWith({'developer_id.dZjc5MD': true});
+    assertApi('setInWindow').wasCalledWith('__cokiqDeveloperIdSet', true, true);
     assertApi('injectScript').wasCalled();
     assertApi('gtmOnSuccess').wasCalled();
 - name: All regions sets one denied default
