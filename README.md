@@ -6,7 +6,8 @@ Google Tag Manager Community Template Gallery source for **COKIQ Consent Banner*
 
 1. **Consent Mode v2 defaults** with `setDefaultConsentState` for `ad_storage`, `analytics_storage`, `ad_user_data` and `ad_personalization` (plus `functionality_storage`, `personalization_storage`, `security_storage`), customisable **by region**: all regions, EEA + UK + Switzerland, or your own ISO 3166-1/3166-2 list, with a separate default for all other regions. Supports `wait_for_update`, `ads_data_redaction` and `url_passthrough` (`gtagSet`).
 2. **Loads the COKIQ banner** (`https://cokiq.com/api/s/{siteKey}`).
-3. **Consent Mode updates** with `updateConsentState`: the stored choice of a returning visitor (`Cokiq.getConsent`) and every later choice or change (`Cokiq.addConsentListener`). COKIQ categories map to Google consent types as: marketing → ad_storage, ad_user_data, ad_personalization; analytics → analytics_storage; preferences → functionality_storage, personalization_storage; security_storage is always granted.
+3. **Google CMP developer ID**: sets COKIQ's Google CMP developer ID (`developer_id.dZjc5MD`) once per page before the defaults, so Google can identify the consent platform.
+4. **Consent Mode updates** with `updateConsentState`: the stored choice of a returning visitor (`Cokiq.getConsent`) and every later choice or change (`Cokiq.addConsentListener`). COKIQ categories map to Google consent types as: marketing → ad_storage, ad_user_data, ad_personalization; analytics → analytics_storage; preferences → functionality_storage, personalization_storage; security_storage is always granted.
 
 ## Install
 
@@ -38,6 +39,19 @@ Google Tag Manager Community Template Gallery source for **COKIQ Consent Banner*
 ## Tests
 
 The template contains 7 unit tests (Tests tab in the template editor): regional defaults, all regions, custom regions, returning visitor update, listener update, script failure and missing site key.
+
+## Other ways to install COKIQ
+
+- WordPress / WooCommerce: [COKIQ on WordPress.org](https://wordpress.org/plugins/cokiq/) (Plugins > Add New > search "COKIQ")
+- Any website, Shopify, WHMCS, Next.js, React and more: https://cokiq.com/integrations
+
+## Changelog
+
+- **v5** (2026-11-12): brand thumbnail updated to the current COKIQ logo. No code, permission or test change.
+- **v4** (2026-11-02): sets the COKIQ Google CMP developer ID before the Consent Mode defaults; unit test updated.
+- **v3** (2026-11-01): Consent Mode updates via updateConsentState (returning visitors and every new choice), brand thumbnail, 7 unit tests.
+- **v2**: regional Consent Mode v2 defaults, ads_data_redaction, url_passthrough.
+- **v1**: initial release.
 
 ## Docs and support
 
