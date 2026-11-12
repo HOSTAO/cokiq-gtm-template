@@ -1,3 +1,12 @@
+<p align="center">
+  <a href="https://cokiq.com">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset=".github/assets/cokiq-logo-white.svg">
+      <img src=".github/assets/cokiq-logo.svg" alt="COKIQ" width="300">
+    </picture>
+  </a>
+</p>
+
 # COKIQ Consent Banner – Google Tag Manager template
 
 Google Tag Manager Community Template Gallery source for **COKIQ Consent Banner**, the consent management platform (CMP) by COKIQ (Hostao L.L.C.). Website: https://cokiq.com
