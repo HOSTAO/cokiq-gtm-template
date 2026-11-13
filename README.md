@@ -21,7 +21,7 @@ Google Tag Manager Community Template Gallery source for **COKIQ Consent Banner*
 
 ## Install
 
-1. In Google Tag Manager open **Templates > Tag Templates > Search Gallery** and add **COKIQ Consent Banner** (or import `template.tpl`).
+1. Download [`template.tpl`](template.tpl), then in Google Tag Manager open **Templates > Tag Templates > New > ⋮ > Import**. (The Community Template Gallery listing is under Google review; once it is live you can add **COKIQ Consent Banner** from **Search Gallery** instead.)
 2. Create a tag from the template, paste your **COKIQ site key** (dashboard > Sites) and choose the regions (use the same setting as "Where to show the banner" in COKIQ).
 3. Trigger: **Consent Initialization - All Pages**.
 4. Check in GTM **Preview** / Tag Assistant: the consent *default* appears on Consent Initialization before other tags, and an *update* after a banner choice.
