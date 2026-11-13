@@ -16,7 +16,8 @@ Google Tag Manager Community Template Gallery source for **COKIQ Consent Banner*
 1. **Consent Mode v2 defaults** with `setDefaultConsentState` for `ad_storage`, `analytics_storage`, `ad_user_data` and `ad_personalization` (plus `functionality_storage`, `personalization_storage`, `security_storage`), customisable **by region**: all regions, EEA + UK + Switzerland, or your own ISO 3166-1/3166-2 list, with a separate default for all other regions. Supports `wait_for_update`, `ads_data_redaction` and `url_passthrough` (`gtagSet`).
 2. **Loads the COKIQ banner** (`https://cokiq.com/api/s/{siteKey}`).
 3. **Google CMP developer ID**: sets COKIQ's Google CMP developer ID (`developer_id.dZjc5MD`) once per page before the defaults, so Google can identify the consent platform.
-4. **Consent Mode updates** with `updateConsentState`: the stored choice of a returning visitor (`Cokiq.getConsent`) and every later choice or change (`Cokiq.addConsentListener`). COKIQ categories map to Google consent types as: marketing → ad_storage, ad_user_data, ad_personalization; analytics → analytics_storage; preferences → functionality_storage, personalization_storage; security_storage is always granted.
+4. **Returning visitors**: reads the visitor's stored COKIQ choice from the first-party `cokiq` cookie and applies it with `updateConsentState` straight away on Consent Initialization, before any other tag fires and without waiting for the banner script (expired choices are ignored).
+5. **Consent Mode updates** with `updateConsentState`: every later choice, change or withdrawal (`Cokiq.addConsentListener`). COKIQ categories map to Google consent types as: marketing → ad_storage, ad_user_data, ad_personalization; analytics → analytics_storage; preferences → functionality_storage, personalization_storage; security_storage is always granted.
 
 ## Install
 
@@ -40,6 +41,7 @@ Google Tag Manager Community Template Gallery source for **COKIQ Consent Banner*
 ## Permissions
 
 - `access_consent`: read/write the 7 consent types
+- `get_cookies`: read the `cokiq` consent cookie (stored choice of a returning visitor)
 - `write_data_layer`: `ads_data_redaction`, `url_passthrough`
 - `access_globals`: write `__cokiqConsentModeDefaultsReady` (so the COKIQ script does not send a second default); execute `Cokiq.getConsent` and `Cokiq.addConsentListener`
 - `inject_script`: `https://cokiq.com/api/s/*`
@@ -47,7 +49,7 @@ Google Tag Manager Community Template Gallery source for **COKIQ Consent Banner*
 
 ## Tests
 
-The template contains 7 unit tests (Tests tab in the template editor): regional defaults, all regions, custom regions, returning visitor update, listener update, script failure and missing site key.
+The template contains 10 unit tests (Tests tab in the template editor): regional defaults, all regions, custom regions, returning-visitor cookie update before the script loads, expired cookie, invalid cookie, stored choice from the script, later choice and withdrawal via the listener, script failure, and missing site key (defaults still set).
 
 ## Other ways to install COKIQ
 
@@ -56,6 +58,7 @@ The template contains 7 unit tests (Tests tab in the template editor): regional 
 
 ## Changelog
 
+- **v6** (2026-11-13): a returning visitor's stored choice is applied from the first-party `cokiq` cookie before other tags fire (Google's recommended consent template pattern); Consent Mode defaults are set even when the site key is missing; `queryPermission` check before loading the script; 10 unit tests.
 - **v5** (2026-11-12): brand thumbnail updated to the current COKIQ logo. No code, permission or test change.
 - **v4** (2026-11-02): sets the COKIQ Google CMP developer ID before the Consent Mode defaults; unit test updated.
 - **v3** (2026-11-01): Consent Mode updates via updateConsentState (returning visitors and every new choice), brand thumbnail, 7 unit tests.
