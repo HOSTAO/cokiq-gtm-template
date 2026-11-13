@@ -1,6 +1,8 @@
 homepage: "https://cokiq.com"
 documentation: "https://cokiq.com/docs/google-consent-mode-basic-vs-advanced"
 versions:
+  - sha: bfe90178ec531953ac860c937ebbe43ca57f37aa
+    changeNotes: "Returning visitors: the stored COKIQ choice is applied from the first-party cokiq cookie on Consent Initialization, before other tags fire. Consent Mode defaults are set even without a site key. queryPermission check before loading the script. 10 unit tests."
   - sha: 58efb0d1ea41ffe55d1b1475f7e689a156840890
     changeNotes: "Brand thumbnail updated to the current COKIQ logo. No change to the template code, permissions or tests."
   - sha: ee3fd653ce4ed8acc442c7ad2f13f8bd29e0fc95
