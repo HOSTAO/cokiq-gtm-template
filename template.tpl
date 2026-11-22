@@ -30,6 +30,23 @@ ___INFO___
 }
 
 
+___VENDOR_DETAILS___
+
+{
+  "preview": [],
+  "vendorName": "COKIQ",
+  "description": "<p><b>COKIQ</b> is a cookie consent and privacy operations platform operated by Hostao L.L.C. It scans the cookies and trackers a website loads, holds optional trackers until the visitor chooses, sends each choice to <b>Google Consent Mode v2</b> and keeps a dated consent record.</p><p>Privacy policy: https://cokiq.com/privacy. Support: support@cokiq.com</p>",
+  "homepageUrl": "https://cokiq.com",
+  "termsAndConditionsUrl": "https://cokiq.com/terms",
+  "freeTier": "Free plan available (1 website, no card needed)",
+  "price": "<p><b>Free</b> plan: $0 forever, 1 website, 5,000 pageviews/month.</p><p>Paid plans start at <b>Starter $9/month</b> (Business $29/month, Agency $99/month). Prices in USD; customers in India pay in INR. Full details at https://cokiq.com/pricing</p>",
+  "platforms": [
+    "WEB"
+  ],
+  "defaultSettingsUrl": "https://cokiq.com/docs/getting-started"
+}
+
+
 ___TEMPLATE_PARAMETERS___
 
 [

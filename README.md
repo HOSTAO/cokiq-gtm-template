@@ -51,6 +51,10 @@ Google Tag Manager Community Template Gallery source for **COKIQ Consent Banner*
 
 The template contains 10 unit tests (Tests tab in the template editor): regional defaults, all regions, custom regions, returning-visitor cookie update before the script loads, expired cookie, invalid cookie, stored choice from the script, later choice and withdrawal via the listener, script failure, and missing site key (defaults still set).
 
+## Contact
+
+Support: support@cokiq.com. Bugs and requests: [GitHub Issues](https://github.com/HOSTAO/cokiq-gtm-template/issues). Terms: https://cokiq.com/terms. Privacy: https://cokiq.com/privacy.
+
 ## Other ways to install COKIQ
 
 - WordPress / WooCommerce: [COKIQ on WordPress.org](https://wordpress.org/plugins/cokiq/) (Plugins > Add New > search "COKIQ")
